@@ -32,13 +32,13 @@ const profileSlice = createSlice({
             state.userProfile = {userId, name, email, bio,avatarUrl}
             // or state.userProfile = action.payload
         },
-        profileRequestFailure: (state) => {
+        profileRequestFailure: (state, action) => {
             state.isLoading = false
             state.error = action.payload || 'Error has occurred'
             state.userProfile = null //do i need this
         },
         cancelEdit: (state) => {
-            isEditing = false //cancel button (next to edit button) is pressed 
+            state.isEditing = false //cancel button (next to edit button) is pressed 
         },
         clearError: (state)=> {
             state.error = ''
@@ -70,7 +70,7 @@ const profileSlice = createSlice({
         },
         saveProfileRequestFailure: (state,action) => {
             state.isLoading = false
-            state.error = action.payload || "An Error occured"
+            state.error = action.payload || "An Error occurred"
             state.isEditing = true //form still viable so user can edit 
         }
 
@@ -80,6 +80,8 @@ export const {requestProfile,
             profileRequestSuccess,
             profileRequestFailure,
             editProfile,
+            cancelEdit,
+            clearError,
             saveProfileRequest,
             saveProfileRequestSuccess,
             saveProfileRequestFailure

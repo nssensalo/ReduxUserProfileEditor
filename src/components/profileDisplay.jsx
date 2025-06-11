@@ -12,7 +12,7 @@ ACTIONS:
 
 */
 import React from 'react';
-import { Typography, Button, Stack, Avatar } from '@mui/material';
+import { Typography, Button, Stack, Avatar } from '@mui/material'; 
 
 function ProfileDisplay({ userProfile, onEditClick}){
     if(!userProfile || !userProfile.userId){

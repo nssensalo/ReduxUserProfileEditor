@@ -1,4 +1,4 @@
-import {fetchUserFromAPI, saveUserToAPI} from './api';
+import {getUserProfile, saveUserProfile} from '../../api/api';
 import {
     requestProfile,
     profileRequestSuccess,
@@ -13,7 +13,7 @@ export const fetchProfile = (userId) => async(dispatch)=>{
 try{
     dispatch(requestProfile());//dispatch action
     
-    const userProfile = await fetchUserFromAPI(userId);//api call of success and failure
+    const userProfile = await getUserProfile(userId);//api call of success and failure
 
     dispatch(profileRequestSuccess(userProfile));
 
@@ -29,7 +29,7 @@ export const  saveProfile = (profileData) => async (dispatch)=> {
 try {
     dispatch(saveProfileRequest(profileData));
 
-    const confirmedProfile = await saveUserToAPI(profileData);
+    const confirmedProfile = await saveUserProfile(profileData);
 
     dispatch(saveProfileRequestSuccess(confirmedProfile));
 } catch(error){
